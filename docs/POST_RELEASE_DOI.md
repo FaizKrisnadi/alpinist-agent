@@ -30,3 +30,18 @@ Use this badge format in `README.md`:
 ```
 
 Replace `10.5281/zenodo.XXXXXXX` with the real DOI.
+
+## 4. Use the Helper Script
+
+Run:
+
+```bash
+bash scripts/set_doi.sh 10.5281/zenodo.1234567
+```
+
+The script will:
+
+1. Update `CITATION.cff` DOI (`identifiers.value`).
+2. Replace the DOI placeholder badge value in `README.md`.
+
+The script fails if the DOI argument is missing or looks like a placeholder.
