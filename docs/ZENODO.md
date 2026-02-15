@@ -26,20 +26,20 @@ If release already exists before Zenodo was enabled, use Zenodo **Sync now** and
 
 ## 3. Paste DOI into Citation Metadata
 
-After Zenodo provides DOI `10.5281/zenodo.XXXXXXX`, update `CITATION.cff` with:
+After Zenodo provides a real DOI (example: `10.5281/zenodo.1234567`), update `CITATION.cff` with:
 
 ```yaml
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.XXXXXXX
+    value: 10.5281/zenodo.1234567
 ```
 
 ## 4. Add DOI Badge to README
 
-After DOI is minted, add this badge near the top of `README.md`:
+After DOI is minted, add this badge near the top of `README.md` (example values shown):
 
 ```markdown
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1234567.svg)](https://doi.org/10.5281/zenodo.1234567)
 ```
 
-Replace `10.5281/zenodo.XXXXXXX` with the real DOI.
+Replace the example DOI with your real DOI.

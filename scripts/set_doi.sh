@@ -12,15 +12,14 @@ if [[ $# -ne 1 ]]; then
 fi
 
 doi="$1"
-placeholder="10.5281/zenodo.XXXXXXX"
 
 if [[ -z "${doi}" ]]; then
   echo "Error: DOI must not be empty."
   exit 1
 fi
 
-if [[ "${doi}" == "${placeholder}" || "${doi}" == *"XXXX"* || "${doi}" == *"xxxx"* ]]; then
-  echo "Error: DOI looks like a placeholder: ${doi}"
+if [[ "${doi}" == *"XXXX"* || "${doi}" == *"xxxx"* || "${doi}" == *"example"* ]]; then
+  echo "Error: DOI looks like a placeholder/example: ${doi}"
   exit 1
 fi
 
@@ -29,7 +28,7 @@ if [[ "${doi}" == *" "* ]]; then
   exit 1
 fi
 
-if [[ ! "${doi}" =~ ^10\.[0-9]{4,9}/[-._;()/:A-Za-z0-9]+$ ]]; then
+if [[ ! "${doi}" =~ ^10\.[0-9]{4,9}/[^[:space:]]+$ ]]; then
   echo "Error: DOI format is invalid: ${doi}"
   exit 1
 fi
@@ -40,11 +39,6 @@ citation_file="${repo_root}/CITATION.cff"
 
 if [[ ! -f "${readme_file}" || ! -f "${citation_file}" ]]; then
   echo "Error: README.md and/or CITATION.cff not found."
-  exit 1
-fi
-
-if ! grep -q "${placeholder}" "${readme_file}"; then
-  echo "Error: README.md DOI placeholder not found (${placeholder})."
   exit 1
 fi
 
@@ -65,7 +59,21 @@ else
   } >> "${citation_file}"
 fi
 
-DOI="${doi}" perl -0pi -e "s{\Q${placeholder}\E}{$ENV{DOI}}g" "${readme_file}"
+doi_badge="[![DOI](https://zenodo.org/badge/DOI/${doi}.svg)](https://doi.org/${doi})"
+
+if grep -Eq '^\[!\[DOI\]\(https://zenodo\.org/badge/DOI/' "${readme_file}"; then
+  DOI="${doi}" perl -0pi -e \
+    's{\[!\[DOI\]\(https://zenodo\.org/badge/DOI/[^)]+\.svg\)\]\(https://doi\.org/[^)]+\)}{[![DOI](https://zenodo.org/badge/DOI/$ENV{DOI}.svg)](https://doi.org/$ENV{DOI})}g' \
+    "${readme_file}"
+else
+  tmp_file="$(mktemp)"
+  awk -v badge="${doi_badge}" '
+    { print }
+    !inserted && /^\[!\[License: MIT\]/ { print badge; inserted=1 }
+    END { if (!inserted) print badge }
+  ' "${readme_file}" > "${tmp_file}"
+  mv "${tmp_file}" "${readme_file}"
+fi
 
 echo "Updated DOI in:"
 echo "- ${citation_file}"

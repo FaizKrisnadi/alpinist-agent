@@ -18,7 +18,7 @@ Use this checklist after publishing release `v1.0.1`.
 
 ## 3. Apply DOI to Repository Metadata
 
-After DOI is minted (`10.5281/zenodo.XXXXXXX`), update:
+After DOI is minted (example: `10.5281/zenodo.1234567`), update:
 
 1. `CITATION.cff`: add DOI under `identifiers`.
 2. `README.md`: add DOI badge near the top badges section.
@@ -26,22 +26,23 @@ After DOI is minted (`10.5281/zenodo.XXXXXXX`), update:
 Use this badge format in `README.md`:
 
 ```markdown
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1234567.svg)](https://doi.org/10.5281/zenodo.1234567)
 ```
 
-Replace `10.5281/zenodo.XXXXXXX` with the real DOI.
+Replace the example DOI with your real DOI.
 
 ## 4. Use the Helper Script
 
 Run:
 
 ```bash
+# Example DOI argument; use your real DOI value.
 bash scripts/set_doi.sh 10.5281/zenodo.1234567
 ```
 
 The script will:
 
 1. Update `CITATION.cff` DOI (`identifiers.value`).
-2. Replace the DOI placeholder badge value in `README.md`.
+2. Add or update the DOI badge in `README.md`.
 
 The script fails if the DOI argument is missing or looks like a placeholder.
