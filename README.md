@@ -106,7 +106,7 @@ tests/
 ## How to Cite
 
 - Citation metadata is in `CITATION.cff`.
-- For DOI setup and updates, follow `docs/ZENODO.md`.
+- After enabling Zenodo, each GitHub Release gets a DOI; see `docs/ZENODO.md`.
 
 ## Versioning
 
