@@ -1,5 +1,8 @@
 # alpinist-agent
 
+[![CI](https://github.com/FaizKrisnadi/alpinist-agent/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/FaizKrisnadi/alpinist-agent/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/github/license/FaizKrisnadi/alpinist-agent)](https://github.com/FaizKrisnadi/alpinist-agent/blob/main/LICENSE)
+
 Reproducible replication package for the Alpinist agent:
 
 - CLI wrapper (`alpinist`)
@@ -99,6 +102,11 @@ tests/
 - Use environment variables for `GEMINI_API_KEY` and `TELEGRAM_BOT_TOKEN`.
 - Only `.env.example` is provided as a template.
 - See `docs/SECURITY.md`.
+
+## How to Cite
+
+- Citation metadata is in `CITATION.cff`.
+- For DOI setup and updates, follow `docs/ZENODO.md`.
 
 ## Versioning
 
