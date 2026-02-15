@@ -9,3 +9,7 @@ repository-code: "https://github.com/FaizKrisnadi/alpinist-agent"
 license: "MIT"
 version: "1.0.0"
 date-released: "2026-02-15"
+
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.18653066

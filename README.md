@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/FaizKrisnadi/alpinist-agent/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/FaizKrisnadi/alpinist-agent/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/github/license/FaizKrisnadi/alpinist-agent)](https://github.com/FaizKrisnadi/alpinist-agent/blob/main/LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18653066.svg)](https://doi.org/10.5281/zenodo.18653066)
 
 Reproducible replication package for the Alpinist agent:
 
