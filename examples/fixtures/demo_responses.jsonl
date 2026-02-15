@@ -1,0 +1,3 @@
+{"prompt": "hello alpinist", "response": "Hello from Alpinist demo mode. This response is loaded from local fixtures and does not call external APIs."}
+{"prompt": "what is demo mode?", "response": "Demo mode is deterministic: prompt/response fixtures are local, and unknown prompts get a stable hash-based fallback."}
+{"prompt": "give me an end-to-end summary", "response": "End-to-end demo complete: config -> mock provider -> agent -> CLI/Telegram wrapper, all without secrets or network calls."}

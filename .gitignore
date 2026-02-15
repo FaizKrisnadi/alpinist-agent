@@ -27,6 +27,15 @@ venv/
 env/
 ENV/
 
+# Environment files (never commit secrets)
+.env
+.env.*
+!.env.example
+
+# Local outputs/data
+outputs/
+data/raw/
+
 # Unit test / coverage reports
 .coverage
 .coverage.*

@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alpinist-agent"
+version = "1.0.0"
+description = "Reproducible Alpinist agent replication package with CLI + Telegram wrappers."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Faiz Krisnadi" }]
+dependencies = [
+  "google-genai>=1.0.0",
+  "typer>=0.12.0",
+  "python-telegram-bot>=21.0",
+  "python-dotenv>=1.0.1",
+]
+
+[project.scripts]
+alpinist = "alpinist.cli:app_main"
+
+[tool.setuptools.packages.find]
+include = ["alpinist*"]
+
+[tool.setuptools.package-data]
+alpinist = ["fixtures/*.jsonl"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
